@@ -33,12 +33,20 @@ services:
       db:
         condition: service_healthy
     environment:
-      - FRONT_URL=http://localhost:2000
+      - FRONT_URL=http://localhost:4200
       - SPRING_DATASOURCE_DRIVER-CLASS-NAME=org.postgresql.Driver
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/notepad
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/notepad
       - SPRING_DATASOURCE_INITIALIZATION-MODE=never
       - SPRING_JPA_HIBERNATE_DDL-AUTO=validate
       - SPRING_JPA_PROPERTIES_HIBERNATE_SHOW_SQL=true
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQL95Dialect
+  notepad-frontend:
+    container_name: notepad-frontend
+    image: notepad-frontend
+    depends_on:
+      API:
+        condition: service_started
+    ports:
+      - "4200:80"
