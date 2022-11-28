@@ -39,7 +39,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/notepad
       - SPRING_DATASOURCE_INITIALIZATION-MODE=never
-      - SPRING_JPA_HIBERNATE_DDL-AUTO=validate
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=create
       - SPRING_JPA_PROPERTIES_HIBERNATE_SHOW_SQL=true
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQL95Dialect
   notepad-frontend:
